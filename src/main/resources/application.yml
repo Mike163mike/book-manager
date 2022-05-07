@@ -11,3 +11,8 @@ spring:
       ddl-auto: none
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+logging:
+  level:
+    com.example.mike.bookmanager: DEBUG
+  file:
+    name: application.log

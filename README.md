@@ -1,5 +1,5 @@
 # book-manager
-CRUD application.
+CRUD application.  
 Stack of technologies: 
 - Spring Boot
 - PostgreSQL
