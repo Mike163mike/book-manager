@@ -1,6 +1,6 @@
 # book-manager
-CRUD application
-stack of technologies: 
+CRUD application.
+Stack of technologies: 
 - Spring Boot
 - PostgreSQL
 - Liquibase
