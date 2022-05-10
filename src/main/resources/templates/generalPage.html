@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Books. Our ground page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--    <link rel="stylesheet" type="text/css" media="all"-->
+    <!--          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />-->
+</head>
+<body>
+<h1>Welcome to our book store!</h1>
+
+<table style="width: 50%">
+    <caption>
+        <h2>
+            All books in stock
+        </h2>
+    </caption>
+
+    <tr>
+        <th>id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <div th:each="book : ${listBooks}">
+        <tr>
+            <td th:text="${book.getId()}">id</td>
+            <td>
+                <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book.getBookTitle()}">title</a>
+            </td>
+            <td th:text="${book.getBookAuthor()}">author</td>
+            <td th:text="${book.getBookPrice()}">price</td>
+            <td>
+                <a th:href="@{/books/{id}(id=${book.getId()})}">edit</a>
+            </td>
+            <td>
+                <a th:href="@{/books/{id}(id=${book.getId()})}">delete</a>
+            </td>
+        </tr>
+    </div>
+</table>
+
+<h2>
+    Add a Book
+</h2>
+
+<form method="post" action="/books">
+    <label for="bookTitle">Add title</label>
+    <input type="text" name="bookTitle" id="bookTitle" placeholder="title"/>
+    <br/>
+    <br/>
+    <label for="bookAuthor">Add author</label>
+    <input type="text" name="bookAuthor" id="bookAuthor" placeholder="author"/>
+    <br/>
+    <br/>
+    <label for="bookPrice">Add price </label>
+    <input type="text" name="bookPrice" id="bookPrice" placeholder="price"/>
+    <br/>
+    <br/>
+    <input type="submit" name="Add book" value="Add book">
+</form>
+
+</body>
+</html>
+
+
+
+
+

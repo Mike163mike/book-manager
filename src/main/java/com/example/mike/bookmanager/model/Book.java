@@ -10,7 +10,6 @@ import java.util.Objects;
 //@Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Table(name = "books")
 public class Book {
 
@@ -24,6 +23,22 @@ public class Book {
     private String bookAuthor;
     @Column(name = "book_price")
     private Integer bookPrice;
+
+    public Book() {
+    }
+
+    public Book(Integer id, String bookTitle, String bookAuthor, Integer bookPrice) {
+        this.id = id;
+        this.bookTitle = bookTitle;
+        this.bookAuthor = bookAuthor;
+        this.bookPrice = bookPrice;
+    }
+
+    public Book(String bookTitle, String bookAuthor, Integer bookPrice) {
+        this.bookTitle = bookTitle;
+        this.bookAuthor = bookAuthor;
+        this.bookPrice = bookPrice;
+    }
 
     public Integer getId() {
         return id;

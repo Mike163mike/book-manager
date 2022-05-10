@@ -4,10 +4,10 @@
 
 create table if not exists books
 (
-    id          int primary key not null,
-    book_title  varchar(255)    not null,
-    book_author varchar(255)    not null,
-    book_price  int             not null
+    id          int primary key generated always as identity,
+    book_title  varchar(255) not null,
+    book_author varchar(255) not null,
+    book_price  numeric      not null
 );
 
 -- CREATE TABLE IF NOT EXISTS version_release

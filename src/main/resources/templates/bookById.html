@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Finding book by id</title>
 </head>
 <h1>The book that you find:</h1>
 
-<table style="width: 75%;">
+<table style="width: 50%;">
     <caption>
         <h2>
             Books in stock we fond
@@ -24,11 +24,8 @@
         <td><span th:text="${book.getBookTitle()}"></span></td>
         <td><span th:text="${book.getBookAuthor()}"></span></td>
         <td><span th:text="${book.getBookPrice()}"></span></td>
-        <!--        <td>-->
-<!--            <input type="text" name="Price" value="1000" th:text="${book.getBookPrice()}"/>-->
-<!--        </td>-->
-        </tr>
-    </table>
+    </tr>
+</table>
 
-    </html>
+</html>
 
