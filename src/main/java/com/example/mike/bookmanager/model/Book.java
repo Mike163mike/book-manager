@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 //@Getter
-@Setter
+//@Setter
 @ToString
 @Table(name = "books")
 public class Book {
@@ -22,19 +22,19 @@ public class Book {
     @Column(name = "book_author")
     private String bookAuthor;
     @Column(name = "book_price")
-    private Integer bookPrice;
+    private Double bookPrice;
 
     public Book() {
     }
 
-    public Book(Integer id, String bookTitle, String bookAuthor, Integer bookPrice) {
+    public Book(Integer id, String bookTitle, String bookAuthor, Double bookPrice) {
         this.id = id;
         this.bookTitle = bookTitle;
         this.bookAuthor = bookAuthor;
         this.bookPrice = bookPrice;
     }
 
-    public Book(String bookTitle, String bookAuthor, Integer bookPrice) {
+    public Book(String bookTitle, String bookAuthor, Double bookPrice) {
         this.bookTitle = bookTitle;
         this.bookAuthor = bookAuthor;
         this.bookPrice = bookPrice;
@@ -52,8 +52,24 @@ public class Book {
         return bookAuthor;
     }
 
-    public Integer getBookPrice() {
+    public Double getBookPrice() {
         return bookPrice;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
+
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor;
+    }
+
+    public void setBookPrice(Double bookPrice) {
+        this.bookPrice = bookPrice;
     }
 
     @Override

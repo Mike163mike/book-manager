@@ -7,5 +7,5 @@ public class BookAddDto {
 
     private String bookTitle;
     private String bookAuthor;
-    private Integer bookPrice;
+    private Double bookPrice;
 }

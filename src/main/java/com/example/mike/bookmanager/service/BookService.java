@@ -8,7 +8,7 @@ public interface BookService {
 
     public void add(Book book);
 
-    public void updateBook(Book book);
+    public void updateBook(Integer id, Book book);
 
     public void removeBook(Integer id);
 

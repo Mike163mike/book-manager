@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Books. Our ground page</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <!--    <link rel="stylesheet" type="text/css" media="all"-->
-    <!--          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />-->
+    <meta charset="UTF-8"/>
+
 </head>
 <body>
 <h1>Welcome to our book store!</h1>
@@ -24,42 +23,41 @@
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-    <div th:each="book : ${listBooks}">
-        <tr>
-            <td th:text="${book.getId()}">id</td>
-            <td>
-                <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book.getBookTitle()}">title</a>
-            </td>
-            <td th:text="${book.getBookAuthor()}">author</td>
-            <td th:text="${book.getBookPrice()}">price</td>
-            <td>
-                <a th:href="@{/books/{id}(id=${book.getId()})}">edit</a>
-            </td>
-            <td>
-                <a th:href="@{/books/{id}(id=${book.getId()})}">delete</a>
-            </td>
-        </tr>
-    </div>
+    <tr th:each="book : ${listBooks}">
+        <td th:utext="${book.getId()}">id</td>
+        <td>
+            <a th:href="@{/books/{id}(id=${book.getId()})}" th:utext="${book.getBookTitle()}">title</a>
+        </td>
+        <td th:utext="${book.getBookAuthor()}">author</td>
+        <td th:utext="${book.getBookPrice()}">price</td>
+        <td>
+            <a th:href="@{/books/{id}(id=${book.getId()})}">edit</a>
+        </td>
+        <td>
+            <a th:href="@{/books/{id}(id=${book.getId()})}">delete</a>
+        </td>
+    </tr>
 </table>
 
 <h2>
     Add a Book
 </h2>
 
-<form method="post" action="/books">
-    <label for="bookTitle">Add title</label>
-    <input type="text" name="bookTitle" id="bookTitle" placeholder="title"/>
+
+<form th:method="POST" th:action="@{/books}" th:object="${book}">
+    <label for="bookTitle">Enter title</label>
+    <input type="text" th:field="*{bookTitle}" id="bookTitle" placeholder="title"/>
     <br/>
     <br/>
-    <label for="bookAuthor">Add author</label>
-    <input type="text" name="bookAuthor" id="bookAuthor" placeholder="author"/>
+    <label for="bookAuthor">Enter author</label>
+    <input type="text" th:field="*{bookAuthor}" id="bookAuthor" placeholder="author"/>
     <br/>
     <br/>
-    <label for="bookPrice">Add price </label>
-    <input type="text" name="bookPrice" id="bookPrice" placeholder="price"/>
+    <label for="bookPrice">Enter price </label>
+    <input type="text" th:field="*{bookPrice}" id="bookPrice" placeholder="price"/>
     <br/>
     <br/>
-    <input type="submit" name="Add book" value="Add book">
+    <input type="submit" value="Add book">
 </form>
 
 </body>

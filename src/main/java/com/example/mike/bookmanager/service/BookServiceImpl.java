@@ -29,8 +29,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void updateBook(Book book) {
-        repository.save(book);
+    public void updateBook(Integer id, Book book) {
+        Book oldBook = repository.findById(id).orElseThrow(() -> new AppException("The book with id = " + id + " don't exist"));
+        Book newBook = new Book(id, book.getBookTitle(), book.getBookAuthor(), book.getBookPrice());
+        repository.save(newBook);
         log.debug("Book " + book.getBookTitle() + " updated successfully");
     }
 

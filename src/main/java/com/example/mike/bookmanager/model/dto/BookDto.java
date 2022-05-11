@@ -8,5 +8,5 @@ public class BookDto {
     private Integer id;
     private String bookTitle;
     private String bookAuthor;
-    private Integer bookPrice;
+    private Double bookPrice;
 }
