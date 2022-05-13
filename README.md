@@ -1,7 +1,8 @@
 # book-manager
-CRUD application.  
+CRUD application with DB connection and input parameters validation.
 Stack of technologies: 
 - Spring Boot
 - PostgreSQL
 - Liquibase
+- 
 

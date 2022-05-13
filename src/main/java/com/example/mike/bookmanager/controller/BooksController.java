@@ -5,11 +5,15 @@ import com.example.mike.bookmanager.model.mapper.BookMapper;
 import com.example.mike.bookmanager.service.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+//@Validated
 @RequestMapping("/books")
 public class BooksController {
 
@@ -30,12 +34,16 @@ public class BooksController {
     }
 
     @GetMapping("/new")
-    public String getFormForAdd(@ModelAttribute("book") Book book) {
+    public String getFormForAdd(@ModelAttribute("book") Book book){
         return "generalPage";
     }
 
     @PostMapping
-    public String addBook(@ModelAttribute("book") Book book) {
+    public String addBook(@ModelAttribute("book") @Valid Book book,
+                          BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "generalPage";
+        }
         service.add(book);
         return "redirect:/books";
     }
@@ -53,8 +61,12 @@ public class BooksController {
     }
 
     @PatchMapping("/{id}")
-    public String edit(@ModelAttribute("book") Book book,
+    public String edit(@ModelAttribute("book") @Valid Book book,
+                       BindingResult bindingResult,
                        @PathVariable("id") Integer id) {
+        if (bindingResult.hasErrors()) {
+            return "generalPage";
+        }
         service.updateBook(id, book);
         return "redirect:/books";
     }

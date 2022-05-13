@@ -31,10 +31,12 @@
         <td th:utext="${book.getBookAuthor()}">author</td>
         <td th:utext="${book.getBookPrice()}">price</td>
         <td>
-            <a th:href="@{/books/{id}(id=${book.getId()})}">edit</a>
+            <a th:href="@{/books/{id}/edit(id=${book.getId()})}">edit</a>
         </td>
         <td>
-            <a th:href="@{/books/{id}(id=${book.getId()})}">delete</a>
+            <form th:method="delete" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
+                <input type="submit" value="delete">
+            </form>
         </td>
     </tr>
 </table>
@@ -42,15 +44,19 @@
 <h2>
     Add a Book
 </h2>
+<hr/>
 
+<br/>
 
 <form th:method="POST" th:action="@{/books}" th:object="${book}">
     <label for="bookTitle">Enter title</label>
     <input type="text" th:field="*{bookTitle}" id="bookTitle" placeholder="title"/>
+    <div style="color:red" th:if="${#fields.hasErrors('bookTitle')}" th:errors="*{bookTitle}">Title error</div>
     <br/>
     <br/>
     <label for="bookAuthor">Enter author</label>
     <input type="text" th:field="*{bookAuthor}" id="bookAuthor" placeholder="author"/>
+    <div style="color:red" th:if="${#fields.hasErrors('bookAuthor')}" th:errors="*{bookAuthor}">Author error</div>
     <br/>
     <br/>
     <label for="bookPrice">Enter price </label>

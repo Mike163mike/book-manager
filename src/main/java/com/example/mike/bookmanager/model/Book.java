@@ -4,6 +4,8 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
@@ -17,8 +19,12 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+    @NotEmpty(message = "This field should not be empty.")
+    @Size(min = 1, max = 20, message = "Max length of the field is 20 letters.")
     @Column(name = "book_title")
     private String bookTitle;
+    @NotEmpty(message = "This field should not be empty.")
+    @Size(min = 1, max = 20, message = "Max length of the field is 20 letters.")
     @Column(name = "book_author")
     private String bookAuthor;
     @Column(name = "book_price")
